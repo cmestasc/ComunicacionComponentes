@@ -1,0 +1,25 @@
+<form class="example-form" [formGroup]="personaForm" (ngSubmit)="onSubmit()">
+<mat-form-field appearance="outline">
+    <mat-label>Nombre:</mat-label>
+    <input matInput placeholder="" type="text" id="first-name" formControlName="formNombre">
+</mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Apellidos:</mat-label>
+    <input matInput placeholder="" type="text" id="lastname" formControlName="formApellidos">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Edad:</mat-label>
+    <input matInput placeholder="" type="number" id="age" formControlName="formEdad">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nacionalidad:</mat-label>
+    <select matNativeControl formControlName="formNacionalidad">
+        <option *ngFor="let item of nacionalidad" [value]="item">{{item}}</option>
+    </select>
+  </mat-form-field>
+  <button type="submit" [disabled]="!personaForm.valid" mat-raised-button color="primary">Agregar</button>
+</form>
+

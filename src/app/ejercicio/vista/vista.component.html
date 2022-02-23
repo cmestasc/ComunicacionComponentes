@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-title-group>
+        <mat-card-title>Agregar:</mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+        <app-agregar></app-agregar>
+    </mat-card-content>
+
+
+        <mat-card-title>Buscar:</mat-card-title>
+    <app-buscador></app-buscador>
+
+    <mat-card-title-group>
+        <mat-card-title>Datos:</mat-card-title>
+    </mat-card-title-group>
+    <app-grid [mydata]="enviarData" ></app-grid>
+
+</mat-card>

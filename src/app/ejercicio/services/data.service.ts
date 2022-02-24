@@ -23,6 +23,7 @@ export class DataService {
 
 ];
 datosFiltrados(filtro:string) : Persona[]{
+  filtro = filtro.toLowerCase();
   return this._personas.filter(word => 
     word.Nombre.toLowerCase().includes(filtro) ||
     word.Apellidos.toLowerCase().includes(filtro) ||

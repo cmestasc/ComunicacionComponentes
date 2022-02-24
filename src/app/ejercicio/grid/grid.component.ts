@@ -12,6 +12,12 @@ import { DataService } from '../services/data.service';
 export class GridComponent implements OnInit {
   @Input() dataGrid: Persona[]=[];
   @Input() filtroGrid: string='';
+  @Input() personaRecibidaGrid: Persona = {
+    Nombre: "",
+    Apellidos: '',
+    Edad: 0,
+    Nacionalidad: ""
+};
 
   filtrar(){
     return this.dataService.datosFiltrados(this.filtroGrid);

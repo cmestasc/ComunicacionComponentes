@@ -12,7 +12,12 @@ import { DataService } from '../services/data.service';
 export class VistaComponent implements OnInit {
   @Output() dataVista: Persona[]= this.dataService.Data;
   personas: Persona[]=this.dataVista;
-
+  @Input() personaRecibidaVista: Persona = {
+    Nombre: "",
+    Apellidos: '',
+    Edad: 0,
+    Nacionalidad: ""
+};
   @Input() filtroVista: string ='';
 
 

@@ -27,7 +27,7 @@ export class AgregarComponent implements OnInit {
     formNombre: new FormControl(''),
     formApellidos: new FormControl(''),
     formEdad: new FormControl(0),
-    formNacionalidad: new FormControl
+    formNacionalidad: new FormControl()
     
   });
 
@@ -67,6 +67,7 @@ export class AgregarComponent implements OnInit {
       //Una vez creada la instancia de la nueva persona, llamo al método del servicio para agregarlo al 
       //array de personas.
       this.dataService.agregarPersona(this.nuevaPersona);
+      document.getElementById("buttonReset")?.click();
 
     }
 

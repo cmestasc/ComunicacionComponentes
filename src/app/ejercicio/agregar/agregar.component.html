@@ -1,7 +1,7 @@
 <form class="example-form" [formGroup]="personaForm" (ngSubmit)="onSubmit()">
 <mat-form-field appearance="outline">
     <mat-label>Nombre:</mat-label>
-    <input matInput placeholder="" type="text" id="first-name" formControlName="formNombre">
+    <input matInput placeholder="" type="text" id="formNombre" formControlName="formNombre">
 </mat-form-field>
 
   <mat-form-field appearance="outline">
@@ -22,6 +22,6 @@
     </select>
   </mat-form-field>
   <button type="submit" [disabled]="!personaForm.valid" mat-raised-button color="primary">Agregar</button>
-  <button type="reset" mat-raised-button color="primary">Reset</button>
+  <button type="reset" mat-raised-button color="primary" id="buttonReset">Reset</button>
 </form>
 

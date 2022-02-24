@@ -3,7 +3,7 @@
         <mat-card-title>Agregar:</mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
-        <app-agregar></app-agregar>
+        <app-agregar (newPersona)="personaRecibidaVista"></app-agregar>
     </mat-card-content>
 
 
@@ -13,5 +13,5 @@
     <mat-card-title-group>
         <mat-card-title>Datos:</mat-card-title>
     </mat-card-title-group>
-    <app-grid [dataGrid]="dataVista" [filtroGrid]="filtroVista"></app-grid>
+    <app-grid [dataGrid]="dataVista" [filtroGrid]="filtroVista" [personaRecibidaGrid]="personaRecibidaVista"></app-grid>
 </mat-card>

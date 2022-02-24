@@ -10,7 +10,12 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit {
-  @Input() mydata: Persona[]=[];
+  @Input() dataGrid: Persona[]=[];
+  @Input() filtroGrid: string='';
+
+  filtrar(){
+    return this.dataService.datosFiltrados(this.filtroGrid);
+  }
 
   constructor(private dataService:DataService) { }
   
@@ -22,5 +27,6 @@ export class GridComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
 
 }

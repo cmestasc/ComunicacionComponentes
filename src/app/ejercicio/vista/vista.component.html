@@ -7,12 +7,11 @@
     </mat-card-content>
 
 
-        <mat-card-title>Buscar:</mat-card-title>
-    <app-buscador></app-buscador>
+        <mat-card-title >Buscar:</mat-card-title>
+    <app-buscador (filtroBuscador)="filtroVista = $event"></app-buscador>
 
     <mat-card-title-group>
         <mat-card-title>Datos:</mat-card-title>
     </mat-card-title-group>
-    <app-grid [mydata]="enviarData" ></app-grid>
-
+    <app-grid [dataGrid]="dataVista" [filtroGrid]="filtroVista"></app-grid>
 </mat-card>

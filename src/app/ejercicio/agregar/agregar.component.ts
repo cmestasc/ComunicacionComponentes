@@ -1,3 +1,4 @@
+import { LowerCasePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
@@ -14,7 +15,8 @@ export class AgregarComponent implements OnInit {
   nacionalidad : string[] = this.dataService.nacionalidad;
 
   @Output() newPersona : EventEmitter <Persona> = new EventEmitter();
-  nueva : Persona = {
+
+  nuevaPersona : Persona = {
         Nombre:'',
         Apellidos:'',
         Edad:0,
@@ -29,6 +31,10 @@ export class AgregarComponent implements OnInit {
     
   });
 
+   capitalizeFirstLetter(string:string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
   onSubmit(){
     let mensaje: string = '';
     let validado = true;
@@ -52,14 +58,15 @@ export class AgregarComponent implements OnInit {
       window.alert(mensaje);
       console.log(this.personaForm.value.formNacionalidad);
     }else{
-      this.nueva.Nombre = this.personaForm.value.formNombre;
-      this.nueva.Apellidos = this.personaForm.value.formApellidos;
-      this.nueva.Edad = this.personaForm.value.formEdad;
-      this.nueva.Nacionalidad = this.personaForm.value.formNacionalidad;
+      this.nuevaPersona.Nombre = this.capitalizeFirstLetter(this.personaForm.value.formNombre);
+      this.nuevaPersona.Apellidos = this.capitalizeFirstLetter(this.personaForm.value.formApellidos);
+      this.nuevaPersona.Edad = this.personaForm.value.formEdad;
+      this.nuevaPersona.Nacionalidad = this.personaForm.value.formNacionalidad;
 
-      this.newPersona.emit(this.nueva);
-      console.log(this.nueva);
-      this.dataService.agregarPersona(this.nueva);
+      this.newPersona.emit(this.nuevaPersona);
+      //Una vez creada la instancia de la nueva persona, llamo al método del servicio para agregarlo al 
+      //array de personas.
+      this.dataService.agregarPersona(this.nuevaPersona);
 
     }
 

@@ -22,6 +22,18 @@ export class DataService {
   }
 
 ];
+datosFiltrados(filtro:string) : Persona[]{
+  return this._personas.filter(word => 
+    word.Nombre.toLowerCase().includes(filtro) ||
+    word.Apellidos.toLowerCase().includes(filtro) ||
+    word.Edad.toString().includes(filtro) ||
+    word.Nacionalidad.toLowerCase().includes(filtro))
+    // for (let i = 0; i < this._personas.length; i++) {
+    //   this._personas[i].Nombre.contains
+    // }
+    ;
+}
+
 get Data() : Persona[]{
   return this._personas;
 }

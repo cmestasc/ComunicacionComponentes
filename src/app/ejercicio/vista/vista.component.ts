@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 import { Persona } from '../interfaces/Persona.interface';
 import { DataService } from '../services/data.service';
@@ -10,8 +10,11 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./vista.component.css']
 })
 export class VistaComponent implements OnInit {
-  @Output() enviarData: Persona[]= this.dataService.Data;
-  personas: Persona[]=this.enviarData;
+  @Output() dataVista: Persona[]= this.dataService.Data;
+  personas: Persona[]=this.dataVista;
+
+  @Input() filtroVista: string ='';
+
 
   constructor(private dataService:DataService) { }
 

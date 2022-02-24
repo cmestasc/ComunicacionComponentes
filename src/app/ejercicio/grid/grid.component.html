@@ -1,7 +1,18 @@
-<kendo-grid [data]="mydata">
-    <kendo-grid-column field="Nombre" title="Nombre"> </kendo-grid-column>
-    <kendo-grid-column field="Apellidos" title="Apellido"> </kendo-grid-column>
-    <kendo-grid-column field="Edad" title="Edad"> </kendo-grid-column>
-    <kendo-grid-column field="Nacionalidad" title="Nacionalidad"> </kendo-grid-column>
+
+
+<kendo-grid [data]="dataGrid" *ngIf="!filtroGrid">
+    <kendo-grid-column field="Nombre" title="Nombre" [filterable]="true"> </kendo-grid-column>
+    <kendo-grid-column field="Apellidos" title="Apellido" [filterable]="true"> </kendo-grid-column>
+    <kendo-grid-column field="Edad" title="Edad" [filterable]="true"> </kendo-grid-column>
+    <kendo-grid-column field="Nacionalidad" title="Nacionalidad" [filterable]="true"> </kendo-grid-column>
+    <kendo-grid-column title="Borrar"></kendo-grid-column>
+  </kendo-grid>
+
+
+  <kendo-grid [data]="filtrar()" *ngIf="filtroGrid">
+    <kendo-grid-column field="Nombre" title="Nombre" [filterable]="true"> </kendo-grid-column>
+    <kendo-grid-column field="Apellidos" title="Apellido" [filterable]="true"> </kendo-grid-column>
+    <kendo-grid-column field="Edad" title="Edad" [filterable]="true"> </kendo-grid-column>
+    <kendo-grid-column field="Nacionalidad" title="Nacionalidad" [filterable]="true"> </kendo-grid-column>
     <kendo-grid-column title="Borrar"></kendo-grid-column>
   </kendo-grid>

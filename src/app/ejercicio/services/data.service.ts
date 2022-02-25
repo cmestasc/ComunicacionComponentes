@@ -4,7 +4,7 @@ import { Persona } from '../interfaces/Persona.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+ class DataService {
   private nacionalidadData: string[]=["Española", "Inglesa", "Portuguesa", "Brasileña"];
 
    private _personas: Persona[] = [

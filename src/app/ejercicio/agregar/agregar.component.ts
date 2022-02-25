@@ -5,22 +5,29 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
 import { Persona } from '../interfaces/Persona.interface';
-import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',
   styleUrls: ['./agregar.component.css']
 })
 export class AgregarComponent implements OnInit {
-  nacionalidad : string[] = this.dataService.nacionalidad;
 
-  @Output() newPersona : EventEmitter <Persona> = new EventEmitter();
+  private _nacionalidad: string[] = [
+    'Española',
+    'Inglesa',
+    'Portuguesa',
+    'Brasileña',
+  ];
+
+  get nacionalidad(){
+    return this._nacionalidad;
+  }
 
   nuevaPersona : Persona = {
-        Nombre:'',
-        Apellidos:'',
-        Edad:0,
-        Nacionalidad:''
+    Nombre:'',
+    Apellidos:'',
+    Edad:0,
+    Nacionalidad:''
   }
 
   personaForm = new FormGroup({
@@ -30,6 +37,8 @@ export class AgregarComponent implements OnInit {
     formNacionalidad: new FormControl()
     
   });
+
+  @Output() envioNuevaPersona : EventEmitter <Persona> = new EventEmitter();
 
    capitalizeFirstLetter(string:string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -50,30 +59,32 @@ export class AgregarComponent implements OnInit {
       mensaje +="-Introduce una edad válida.\n";
       validado = false;
     }
-    if( !this.dataService.nacionalidad.includes(this.personaForm.value.formNacionalidad) ){
+    if( !this.nacionalidad.includes(this.personaForm.value.formNacionalidad) ){
       mensaje +="-Selecciona una nacionalidad.";
       validado = false;
     }
     if(!validado){
       window.alert(mensaje);
-      console.log(this.personaForm.value.formNacionalidad);
     }else{
       this.nuevaPersona.Nombre = this.capitalizeFirstLetter(this.personaForm.value.formNombre);
       this.nuevaPersona.Apellidos = this.capitalizeFirstLetter(this.personaForm.value.formApellidos);
       this.nuevaPersona.Edad = this.personaForm.value.formEdad;
       this.nuevaPersona.Nacionalidad = this.personaForm.value.formNacionalidad;
 
-      this.newPersona.emit(this.nuevaPersona);
-      //Una vez creada la instancia de la nueva persona, llamo al método del servicio para agregarlo al 
-      //array de personas.
-      this.dataService.agregarPersona(this.nuevaPersona);
+      this.envioNuevaPersona.emit(this.nuevaPersona);
+
+      this.nuevaPersona.Nombre = '';
+      this.nuevaPersona.Apellidos = '';
+      this.nuevaPersona.Edad = 0;
+      this.nuevaPersona.Nacionalidad = '';
+
       document.getElementById("buttonReset")?.click();
 
     }
 
   }
 
-  constructor(private dataService:DataService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

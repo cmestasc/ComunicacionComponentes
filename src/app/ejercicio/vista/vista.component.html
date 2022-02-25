@@ -3,15 +3,19 @@
         <mat-card-title>Agregar:</mat-card-title>
     </mat-card-title-group>
     <mat-card-content>
-        <app-agregar (newPersona)="personaRecibidaVista"></app-agregar>
+        <app-agregar (envioNuevaPersona)="recibirPersona($event)"></app-agregar>
     </mat-card-content>
 
 
         <mat-card-title >Buscar:</mat-card-title>
-    <app-buscador (filtroBuscador)="filtroVista = $event"></app-buscador>
+    <!-- <app-buscador (filtroBuscador)="filtroVista = $event"></app-buscador> -->
+    <app-buscador></app-buscador>
 
     <mat-card-title-group>
         <mat-card-title>Datos:</mat-card-title>
     </mat-card-title-group>
-    <app-grid [dataGrid]="dataVista" [filtroGrid]="filtroVista" [personaRecibidaGrid]="personaRecibidaVista"></app-grid>
+    <!-- <app-grid [filtroGrid]="filtroVista" [personaRecibidaGrid]="personaRecibidaVista"></app-grid> -->
+    <app-grid></app-grid>
 </mat-card>
+
+{{personaRecibidaVista.Nombre}}

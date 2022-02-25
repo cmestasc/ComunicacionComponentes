@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
-import { DataService } from '../services/data.service';
 import { Persona } from '../interfaces/Persona.interface';
 
 @Component({
@@ -13,14 +12,14 @@ export class BuscadorComponent implements OnInit {
   name = new FormControl('');
 
   buscar(){
-    this.filtroBuscador.emit(this.name.value);
-    this.dataService.datosFiltrados(this.name.value);
+    // this.filtroBuscador.emit(this.name.value);
+    // this.dataService.datosFiltrados(this.name.value);
   }
 
   @Output() filtroBuscador = new EventEmitter <string>();
 
 
-  constructor(private dataService:DataService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

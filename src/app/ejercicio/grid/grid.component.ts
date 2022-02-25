@@ -44,8 +44,6 @@ export class GridComponent implements OnInit {
 
   eliminar(persona:Persona){
     this._personasArray.splice(this._personasArray.indexOf(persona),1);
-    window.alert(persona);
-
   }
 
   constructor() {}

@@ -3,8 +3,8 @@
   <kendo-grid-column field="Apellidos" title="Apellido" [filterable]="true"> </kendo-grid-column>
   <kendo-grid-column field="Edad" title="Edad" [filterable]="true"> </kendo-grid-column>
   <kendo-grid-column field="Nacionalidad" title="Nacionalidad" [filterable]="true"> </kendo-grid-column>
-  <kendo-grid-column>
-    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+  <kendo-grid-column title="..." class="k-text-center" [headerStyle]="{'text-align': 'center'}">
+    <ng-template kendoGridCellTemplate let-dataItem class="k-item-center">
       <button kendoButton (click)="eliminar(dataItem)">Eliminar</button>
     </ng-template>
   </kendo-grid-column>

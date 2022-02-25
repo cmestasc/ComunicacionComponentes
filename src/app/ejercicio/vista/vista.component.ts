@@ -12,7 +12,7 @@ export class VistaComponent implements OnInit {
   // @Output() dataVista: Persona[]= this.dataService.Data;
   // personas: Persona[]=this.dataVista;
   personaRecibidaVista: Persona = {
-    Nombre: "mal",
+    Nombre: "",
     Apellidos: '',
     Edad: 0,
     Nacionalidad: ""

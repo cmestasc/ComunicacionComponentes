@@ -1,4 +1,11 @@
-<kendo-grid [data]="personasArray">
+<div *ngIf="personasArray.length == 0; else disabled">
+  <button (click)="cargarDatos()" type="reset" mat-raised-button color="primary" id="buttonDatos">Cargar datos de Prueba</button>
+</div>
+<ng-template #disabled>
+  <button disabled (click)="cargarDatos()" type="reset" mat-raised-button color="primary" id="buttonDatos">Cargar datos de Prueba</button>
+</ng-template>
+
+<kendo-grid [data]="filtrado()">
   <kendo-grid-column field="Nombre" title="Nombre" [filterable]="true"> </kendo-grid-column>
   <kendo-grid-column field="Apellidos" title="Apellido" [filterable]="true"> </kendo-grid-column>
   <kendo-grid-column field="Edad" title="Edad" [filterable]="true"> </kendo-grid-column>
@@ -9,3 +16,4 @@
     </ng-template>
   </kendo-grid-column>
 </kendo-grid>
+<p>GridComponent: {{persona.Nombre}}</p>

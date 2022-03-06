@@ -8,14 +8,11 @@
 
 
         <mat-card-title >Buscar:</mat-card-title>
-    <!-- <app-buscador (filtroBuscador)="filtroVista = $event"></app-buscador> -->
-    <app-buscador></app-buscador>
+    <app-buscador (filtroBuscador)="recibirFiltro($event)"></app-buscador>
 
     <mat-card-title-group>
         <mat-card-title>Datos:</mat-card-title>
     </mat-card-title-group>
-    <!-- <app-grid [filtroGrid]="filtroVista" [personaRecibidaGrid]="personaRecibidaVista"></app-grid> -->
-    <app-grid></app-grid>
+    <app-grid [filtro]="filtroParaGrid" [persona]="personaParaGrid"></app-grid>
 </mat-card>
-
-{{personaRecibidaVista.Nombre}}
+<p>VistaComponent: {{personaParaGrid.Nombre}}</p>

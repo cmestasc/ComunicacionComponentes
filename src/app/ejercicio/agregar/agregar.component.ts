@@ -33,7 +33,7 @@ export class AgregarComponent implements OnInit {
   personaForm = new FormGroup({
     formNombre: new FormControl(''),
     formApellidos: new FormControl(''),
-    formEdad: new FormControl(0),
+    formEdad: new FormControl(),
     formNacionalidad: new FormControl()
     
   });
@@ -47,16 +47,16 @@ export class AgregarComponent implements OnInit {
   onSubmit(){
     let mensaje: string = '';
     let validado = true;
-    if(this.personaForm.value.formNombre.length === 0){
-      mensaje +="-Introduce un nombre válido.\n";
+    if(this.personaForm.value.formNombre.length == 0 || null){
+      mensaje +="-Introduce un nombre.\n";
       validado = false;
     }
-    if(this.personaForm.value.formApellidos.length === 0){
-      mensaje +="-Introduce un apellido válido.\n";
+    if(this.personaForm.value.formApellidos.length == 0){
+      mensaje +="-Introduce un apellido.\n";
       validado = false;
     }
     if(this.personaForm.value.formEdad <= 0){
-      mensaje +="-Introduce una edad válida.\n";
+      mensaje +="-Introduce una edad.\n";
       validado = false;
     }
     if( !this.nacionalidad.includes(this.personaForm.value.formNacionalidad) ){

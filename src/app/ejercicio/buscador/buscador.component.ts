@@ -9,14 +9,15 @@ import { Persona } from '../interfaces/Persona.interface';
   styleUrls: ['./buscador.component.css']
 })
 export class BuscadorComponent implements OnInit {
-  name = new FormControl('');
+  buscadorInput = new FormControl('');
+  
+  @Output() filtroBuscador = new EventEmitter <string>();
 
   buscar(){
-    // this.filtroBuscador.emit(this.name.value);
+    this.filtroBuscador.emit(this.buscadorInput.value);
     // this.dataService.datosFiltrados(this.name.value);
   }
 
-  @Output() filtroBuscador = new EventEmitter <string>();
 
 
   constructor() { }

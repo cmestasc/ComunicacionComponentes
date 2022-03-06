@@ -9,27 +9,33 @@ import { Persona } from '../interfaces/Persona.interface';
   styleUrls: ['./vista.component.css']
 })
 export class VistaComponent implements OnInit {
-  // @Output() dataVista: Persona[]= this.dataService.Data;
-  // personas: Persona[]=this.dataVista;
-  personaRecibidaVista: Persona = {
-    Nombre: "",
+
+  @Input() filtroBuscador:string = 'mal';
+  @Input() filtroVista: string ='';
+
+  @Output() envioPersona = new EventEmitter<Persona>();
+
+  recibirFiltroVista: string='';
+
+  personaParaGrid: Persona = {
+    Nombre: "nn",
     Apellidos: '',
     Edad: 0,
     Nacionalidad: ""
 };
 
+
+
 recibirPersona($event:Persona){
-  this.personaRecibidaVista=$event;
-  console.log($event);
-  console.log($event.Nombre);
-  console.log(this.personaRecibidaVista);
-
-
+  this.personaParaGrid=$event;
+  console.log(this.personaParaGrid);
+  this.envioPersona.emit(this.personaParaGrid);
 }
+filtroParaGrid: string='';
 
-
-  @Input() filtroVista: string ='';
-
+recibirFiltro($event:string){
+  this.filtroParaGrid = $event;
+}
 
   constructor() { }
 

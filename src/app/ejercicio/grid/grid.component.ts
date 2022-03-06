@@ -11,6 +11,21 @@ import { Persona } from '../interfaces/Persona.interface';
   styleUrls: ['./grid.component.css'],
 })
 export class GridComponent implements OnInit {
+
+  @Input() filtro: string = '';
+  @Input() persona: Persona = {
+    Nombre: '',
+    Apellidos: '',
+    Edad: 0,
+    Nacionalidad: '',
+  };
+
+  recibirPersonaGrid(@Input() persona:Persona){
+    console.log(persona);
+    this._personasArray.push(persona);
+    console.log(persona);
+  }
+
   private _personasArray: Persona[] = [
     {
       Nombre: 'Juan',
@@ -25,22 +40,39 @@ export class GridComponent implements OnInit {
       Nacionalidad: 'Española',
     },
   ];
+
   get personasArray(){
     return this._personasArray;
   }
 
-  @Input() dataGrid: Persona[] = [];
-  @Input() filtroGrid: string = '';
-  @Input() personaRecibidaGrid: Persona = {
-    Nombre: '',
-    Apellidos: '',
-    Edad: 0,
-    Nacionalidad: '',
-  };
+  filtrado() :Persona[]{
+    if(this.filtro === ''){
+      return this.personasArray;
+    }else{
+      return this.personasArray.filter(word => 
+        word.Nombre.toLowerCase().includes(this.filtro.toLowerCase()) ||
+        word.Apellidos.toLowerCase().includes(this.filtro.toLowerCase()) ||
+        word.Edad.toString().includes(this.filtro.toLowerCase()) ||
+        word.Nacionalidad.toLowerCase().includes(this.filtro.toLowerCase()))
+    }
+}
 
-  // filtrar() {
-  //   return this.dataService.datosFiltrados(this.filtroGrid);
-  // }
+  cargarDatos(){
+    this._personasArray=[
+      {
+        Nombre: 'Juan',
+        Apellidos: 'García',
+        Edad: 28,
+        Nacionalidad: 'Española',
+      },
+      {
+        Nombre: 'María',
+        Apellidos: 'Gomez',
+        Edad: 30,
+        Nacionalidad: 'Española',
+      },
+    ];
+  }
 
   eliminar(persona:Persona){
     this._personasArray.splice(this._personasArray.indexOf(persona),1);
@@ -48,9 +80,7 @@ export class GridComponent implements OnInit {
 
   constructor() {}
 
-  // getData() {
-  //   return this.dataService.Data;
-  // }
+ 
 
   ngOnInit(): void {}
 }

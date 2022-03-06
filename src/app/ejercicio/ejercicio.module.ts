@@ -11,6 +11,7 @@ import { AgregarComponent } from './agregar/agregar.component';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { GridComponent } from './grid/grid.component';
 import { VistaComponent } from './vista/vista.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -32,7 +33,8 @@ import { VistaComponent } from './vista/vista.component';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ]
 })
 export class EjercicioModule { }

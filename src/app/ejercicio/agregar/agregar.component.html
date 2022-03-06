@@ -16,10 +16,10 @@
 
   <mat-form-field appearance="outline">
     <mat-label>Nacionalidad:</mat-label>
-    <select matNativeControl formControlName="formNacionalidad">
-      <option disabled>Elige una...</option>
-        <option *ngFor="let item of nacionalidad" [value]="item">{{item}}</option>
-    </select>
+    <mat-select matNativeControl formControlName="formNacionalidad">
+      <mat-option disabled>Elige una...</mat-option>
+        <mat-option *ngFor="let item of nacionalidad" [value]="item">{{item}}</mat-option>
+    </mat-select>
   </mat-form-field>
   <button type="submit" [disabled]="!personaForm.valid" mat-raised-button color="primary">Agregar</button>
   <button type="reset" mat-raised-button color="primary" id="buttonReset">Reset</button>
